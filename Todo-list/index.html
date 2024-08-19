@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+
+  <title>To Do List App</title>
+</head>
+
+<body>
+  <section class="container">
+    <form action="" id="task-form" class="form-container">
+      <input type="text" id="taskInput" placeholder="Add a new task...">
+      <button type="submit">Add Task</button>
+    </form>
+    <!-- error message -->
+    <p class="input-error hidden">We only accept letters!</p>
+    <!-- to do items -->
+    <main id="todo-items">
+      <ul id="list-container">
+        <!-- add to do items here -->
+      </ul>
+    </main>
+  </section>
+
+  <script>
+    const form = document.getElementById('task-form')
+    const input = document.getElementById('taskInput')
+    const body = document.querySelector('body')
+    const errorMessage = document.querySelector('.input-error')
+    //lis container
+    const listContainer = document.getElementById('list-container')
+
+    // submit event
+    input.addEventListener('focus', (event) => {
+        // check if it is visible
+      if (!errorMessage.classList.contains('hidden')) {
+        // hide error element
+        errorMessage.classList.add('hidden')
+      }
+    })
+
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault()
+      // input.classList.add('invalid-input')
+      const value = input.value
+
+      // validate
+      // empty input
+      if (value.length == 0) {
+        errorMessage.textContent = 'Please Enter something!'
+        errorMessage.classList.remove('hidden')
+        return false;
+      }
+
+      // accept only letters
+      const pattern = /[a-zA-Z]\w+/
+
+      if (!pattern.test(value)) {
+        errorMessage.textContent = 'We only accept letters'
+        errorMessage.classList.remove('hidden')
+        return false;
+      }
+
+
+      // create new li element
+      const li = document.createElement('li')
+      li.textContent = input.value
+
+      listContainer.appendChild(li)
+
+      // reset the input
+      input.value = ''
+
+    })
+
+
+    // click body reset input color
+    body.addEventListener('click', function(event) {
+      if (input.classList.contains('invalid-input')) {
+        input.classList.remove('invalid-input')
+      }
+    })
+  </script>
+</body>
+
+</html>

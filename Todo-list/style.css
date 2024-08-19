@@ -1,0 +1,48 @@
+body {
+    height: 100vh;
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.form-container input {
+    padding: 10px 20px;
+    font-size: 20;
+   border: blue solid;
+
+}
+
+.form-container input.invalid-input {
+    border: red solid;
+ }
+
+ .input-error {
+    color: red;
+ }
+ 
+ .hidden {
+    display: none;
+ }
+
+
+
+
+
+.form-container button {
+    background-color: blueviolet;
+    color: white;
+    font-size: 20px;
+    padding: 8px 20px;
+}
